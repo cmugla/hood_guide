@@ -27,4 +27,9 @@ Essentials
 
 ## Wireframes
 
+Homepage with possible full bleed image or just colorful...
+![homepage](/wireframes/home.jpg)
+
+When a neighborhood is searched...
+![hood page](/wireframes/hood-page.jpg)
 
