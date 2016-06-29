@@ -10,6 +10,12 @@
 
 ## User Stories
 
+  - As a guest, I should be able to get info about the neighborhood based on an address, including relevant links
+  - As a user, I should be able to save my address/neighborhood
+  - As a user, I should be able to get info about my neighborhood
+  - As a user, I should be able to rate and review the "essentials" in a "what we think" rating scale underneath the yelp review scale
+  - As a user, I should be able to post relevant links, news articles, and upcoming events in a "whats trending in *neighborhood*" section
+
 ## Possible API's linked
 
 What's happening right now:
