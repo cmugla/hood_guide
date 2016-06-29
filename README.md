@@ -23,7 +23,7 @@ Essentials
 ## Other Links
 
   - Join [Next Door](https://nextdoor.com/find-neighborhood/) for social networking with your neighbors
-  
+  - Check out [NeighborhoodScout](http://www.neighborhoodscout.com/) to see statistics about your neighborhood
 
 ## Wireframes
 
