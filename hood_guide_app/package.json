@@ -1,0 +1,19 @@
+{
+  "name": "hood_guide_app",
+  "version": "1.0.0",
+  "description": "Your first friend in the neighborhood, let hood guide paint a picture of your new hood.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nyc",
+    "neighborhood",
+    "news",
+    "concerts",
+    "moving",
+    "neighbors"
+  ],
+  "author": "Celeste Glavin",
+  "license": "MIT"
+}
