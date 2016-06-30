@@ -19,7 +19,7 @@ module.exports = {
       if(err) throw err;
 
       body = JSON.parse(body);
-      res.results = body.response.docs
+      res.results = body.response
       next()
       }
     )

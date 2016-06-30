@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Your neighborhood</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <%if(articleDocs.length){ %>
+   <% articleDocs.forEach( function(article){  %>
+   <section>
+      <h1><%=article.headline.main%></h1>
+      <img src="http://www.nytimes.com/<%=article.multimedia[0].url%>" alt="">
+      <p><%=article.lead_paragraph%></p>
+      <a href="<%=article.web_url%>" target="_blank">Read full article...</a>
+   </section>
+   <% }) %>
+  <% }else{ %>
+   <li>No Results found</li>
+  <% } %>
+</body>
+</html>
