@@ -1,0 +1,24 @@
+HOOD GUIDE
+
+  Yelp: The Essentials
+    - Grocery stores: organic markets, general
+    - Dining: restaurants, cafes, etc.
+    - Nightlife: bars, venues
+
+  Bandsintown: Upcoming shows
+    - Concerts in the area
+
+  NYTimes, npr: how to search for location?
+    - recent news
+
+  Google Maps: shows map of neighborhood with address pinned
+
+
+  Otherlinks:
+    - Sign up for Next Door
+    - See statistics at Neighb
+
+
+  To do:
+    - Other links:
+      - Neighborhood blogs: is there a waya to filter these? user posts?

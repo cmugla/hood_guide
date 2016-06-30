@@ -15,5 +15,9 @@
     "neighbors"
   ],
   "author": "Celeste Glavin",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.6"
+  }
 }

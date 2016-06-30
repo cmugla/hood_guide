@@ -12,8 +12,7 @@ module.exports = {
       qs: {
         'api-key': process.env.NYTIMES_KEY,
         'q': req.params.hood,
-        'sort': "newest",
-        'hl': true
+        'sort': "newest"
       },
     }, (err, response, body)=> {
       if(err) throw err;
