@@ -6,8 +6,7 @@ const path              = require('path')
 const bodyParser        = require('body-parser')
 const session           = require('express-session')
 const methodOverrise    = require('method-override')
-const nytRoute          = require('./routes/nytRoute')
-// const eventRoute        = require('./routes/eventRoute')
+const dataRoute         = require('./routes/dataRoute')
 
 const app               = express()
 const PORT              = process.env.PORT || process.argv[2] || 3000
@@ -39,8 +38,7 @@ app.listen(PORT, function(){
 
 
 /* ROUTES */
-app.use('/neighborhoods', nytRoute);
-// app.use('/neighborhoods', eventRoute);
+app.use('/neighborhoods', dataRoute);
 
 app.get('/', function(req, res){
   res.render('home/index')
