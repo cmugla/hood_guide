@@ -17,6 +17,7 @@
   "author": "Celeste Glavin",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "express-session": "^1.13.0",
     "method-override": "^2.3.6"
   }
