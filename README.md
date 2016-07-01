@@ -20,7 +20,7 @@
 
 What's happening right now:
   - NY Times: recent news articles; filtered by date and location
-  - Bandsintown: UPcoming shows; filtered by date and location
+  - Eventful: UPcoming shows; filtered by date and location
   - Meetups: Upcoming meetups in the area
 
 Essentials
@@ -30,6 +30,29 @@ Essentials
 
   - Join [Next Door](https://nextdoor.com/find-neighborhood/) for social networking with your neighbors
   - Check out [NeighborhoodScout](http://www.neighborhoodscout.com/) to see statistics about your neighborhood
+
+## Proof of Concept limitations
+  
+  Since the project deadline is immediate, I am going to scale the overall concept back to meet big-idea goals for this iteration. Thus, the following limitations are true:
+  
+  - Neighborhoods will only be in New York
+  - Initial search input will be the general Neighborhood name, not an address
+  - Events will be shown for the borough of the neighborhood selected, not the specific neighborhood
+  - News Articles will be shown based on that neighborhood's prevalence in the article (this adds a bit of unpredictability to the targetted news, but I think will still paint a bit of a picture)
+  - Users will be able to save articles and events to their profile
+  
+  - Worflow Pending
+    - Yelp API (the essentials) intigrated
+    - Users will be able to review businesses
+    - 'Users favorites' section on the neighborhood page
+
+## Models
+
+  - User model: gets login/new-user info, encrypts passwords & posts to database
+  - NYT model: gets (via request) articles from NY Times API
+  - Eventful model: gets (view request) events from Eventful API
+    - As mentioned above, this will be specific to the borough, I will use an array of neighborhoods within a borough to generalize the search to the borough name - this is mainly due to the way Events are stored in the Eventful database
+  - Yelp model: gets most popular businesses in the neighborhood ** workflow pending
 
 ## Wireframes
 
@@ -45,3 +68,10 @@ When a user wants to create a profile...
 When a user wants to login...
 ![login user page](/wireframes/login-user.jpg)
 
+## Future Goals
+
+  - Incorporate the Google API so users and guests can search by address
+  - Show events based on the neighborhood (depending on radius outside of address)
+  - Show events in categorized blocks, categories as a whole listed based on their popularity (ex. bushwick: concerts listed above museums; upper east side: museum exhibits listed above concerts; etc.)
+  - Organize Yelp businesses by category, same sorting method as above
+  - History of neighborhood, pictures/maps of the neighborhood through the decades
