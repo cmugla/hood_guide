@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <h1>New User</h1>
+  <div class="new-user">
+    <form action="/user/login" method="post">
+      <label for="">Email:</label>
+      <input type="text" name="email">
+      <br>
+      <label for="">Password:</label>
+      <input type="password" name="password">
+      <br>
+      <input type="submit" value="Login">
+    </form>
+  </div><!-- .new-user -->
+</body>
+</html>
