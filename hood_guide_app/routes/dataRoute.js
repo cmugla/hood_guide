@@ -1,13 +1,18 @@
 'use strict'
 
-const nytData         = require('../models/nytData')
-const eventful        = require('../models/eventful')
+const apiData         = require('../models/apiData')
 const dataRouter      = require('express').Router()
 
-dataRouter.get('/:hood', nytData.showArticle, eventful.showEvent, function(req,res){
+dataRouter.get('/location', apiData.showArticle, function(req,res){
   res.render('hood/index', { articleDocs : res.results.docs,
-                                  events : res.eventResults })
+                                    user : req.session.user })
   // res.json(res.eventResults)
 })
+
+// dataRouter.get('/location', apiData.showArticle, apiData.showEvent, function(req,res){
+//   res.render('hood/index', { articleDocs : res.results.docs,
+//                                   events : res.eventResults })
+//   // res.json(res.eventResults)
+// })
 
 module.exports = dataRouter;

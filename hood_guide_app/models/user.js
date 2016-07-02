@@ -27,7 +27,9 @@ function createUser(req,res,next){
         fname: req.body.fname,
         lname: req.body.lname,
         email: email,
-        passwordDigest: hash
+        passwordDigest: hash,
+        favoriteArticles: [] ,
+        favoriteEvents: []
       }
 
       db.collection('users')
@@ -55,6 +57,7 @@ function loginUser(req,res,next){
         if(user === null) {
           console.log("no user under e-mail", email);
         } else if(bcrypt.compareSync(password, user.passwordDigest)) {
+          console.log(user)
           res.user = user;
         } else {
           console.log("password wasn't right")
@@ -66,5 +69,44 @@ function loginUser(req,res,next){
 
 }
 
+// function getFavorites(req,res,next){}
 
-module.exports = { createUser, loginUser }
+function saveArticle(req,res,next){
+
+  let articleTitle  = req.query.articleTitle;
+  let articleDesc   = req.query.articleDesc;
+  let articleLink   = req.query.articleLink;
+
+  console.log(articleTitle, articleDesc, articleLink);
+
+  let savedArticle = {}
+  savedArticle.articleTitle = articleTitle;
+  savedArticle.articleDesc  = articleDesc;
+  savedArticle.articleLink  = articleLink;
+
+  console.log(req.session.user)
+
+  MongoClient.connect(dbConnection, function(err,db){
+    if(err) throw err;
+
+    db.collection('users')
+      .findOne( { "email" : req.session.user.email } )
+      .update(
+        { "email": req.session.user.email },
+        { $addToSet: {
+          "favoriteArticles": {
+            savedArticle
+          }
+        }
+      },
+      function(err, doc){
+        if(err) throw err;
+        console.log(doc)
+        next()
+      }
+    )
+  })
+}
+
+
+module.exports = { createUser, loginUser, saveArticle }

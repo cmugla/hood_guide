@@ -7,10 +7,15 @@
   <header class="homepage">
     <h1>'Hood Guide</h1>
     <h2>your first friend in the neighborhood</h2>
-    <form action="/home/index" method="get">
-      <input type="text" name="neighborhood" placeholder="enter your new neighborhood name">
+
+    <form action="/neighborhoods/location" method="get">
+      <input type="text" name="location" placeholder="name of neighborhood">
       <input type="submit" value="Find my Hood">
     </form>
+
+    <p>or</p>
+    <a href="/user/login">LOGIN</a>
+
   </header>
 </body>
 </html>

@@ -1,5 +1,7 @@
-const userRouter                  = require('express').Router()
-const { createUser, loginUser }   = require('../models/user')
+const userRouter          = require('express').Router()
+const { createUser,
+        loginUser,
+        saveArticle }     = require('../models/user')
 
 /* CREATE NEW USER */
 userRouter.get('/new', function(req,res){
@@ -39,8 +41,11 @@ userRouter.get('/logout', function(req,res){
   })
 })
 
+/* SAVE ARTICLES */
 
-module.exports = userRouter
+userRouter.get('/save', saveArticle, function(req,res){
+  res.redirect('/')
+})
 
 
 module.exports = userRouter;

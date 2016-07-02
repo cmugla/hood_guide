@@ -6,6 +6,7 @@ const path              = require('path')
 const bodyParser        = require('body-parser')
 const session           = require('express-session')
 const methodOverrise    = require('method-override')
+
 const dataRoute         = require('./routes/dataRoute')
 const userRoute         = require('./routes/userRoute')
 const homeRoute         = require('./routes/homeRoute')
