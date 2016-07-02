@@ -5,6 +5,16 @@
 </head>
 <body>
   <header class="homepage">
+
+    <h2>welcome,
+    <% if(user){ %>
+      <%= user.fname %> <%= user.lname %>
+    <% } else { %>
+      guest!
+      <a href="/user/login">LOGIN</a>
+    <% } %>
+  </h2>
+
     <h1>'Hood Guide</h1>
     <h2>your first friend in the neighborhood</h2>
 

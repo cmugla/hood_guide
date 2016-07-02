@@ -90,12 +90,13 @@ function saveArticle(req,res,next){
     if(err) throw err;
 
     db.collection('users')
-      .findOne( { "email" : req.session.user.email } )
       .update(
         { "email": req.session.user.email },
         { $addToSet: {
           "favoriteArticles": {
-            savedArticle
+            "Article Title" : articleTitle,
+            "Article Desc"  : articleDesc,
+            "Article Link"  : articleLink
           }
         }
       },
