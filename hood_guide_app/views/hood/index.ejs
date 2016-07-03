@@ -4,18 +4,34 @@
   <% include ../partials/head %>
 </head>
 <body>
-
-  <h2>welcome,
+<header class="hoodpage">
+  <h2>welcome to
+    <% if(location) { %>
+      <br>
+      <em><%= location %>,</em>
+      <br>
+    <% } else { %>
+      <br>
+      <em><%= borough %>,</em>
+      <br>
+    <% } %>
     <% if(user){ %>
-      <a href="/user/profile"><%= user.fname %></a>
+      <a href="/user/profile"><%= user.fname %></a></h2>
       <a href="/user/logout">LOGOUT</a>
     <% } else { %>
-      guest!
-      <a href="/user/login">LOGIN</a>
+      guest!</h2>
+      <p><a href="/user/login">LOGIN</a></p>
     <% } %>
-  </h2>
+</header>
+<div class="row">
+  <div class="hood bizs four columns">
+    <h1>NEARBY BIZ's</h1>
+    <section>
 
-  <div class="hood news">
+    </section>
+  </div><!-- .hood.bizs -->
+
+  <div class="hood news four columns">
     <h1>RECENT NEWS</h1>
     <% if( articleDocs.length ) { %>
      <% articleDocs.forEach(function( article ){  %>
@@ -30,13 +46,14 @@
           <button class="save article">Save Article</button>
         <% } %>
      </section>
+     <hr>
      <% }) %>
     <% }else{ %>
      <li>No Results found</li>
     <% } %>
   </div><!-- .hood.news -->
 
-  <div class="hood events">
+  <div class="hood events four columns">
     <h1>RECENT EVENTS</h1>
     <% if( events.length ) { %>
      <% events.forEach(function( event ){  %>
@@ -52,11 +69,14 @@
           <button class="save event">Save Event</button>
         <% } %>
      </section>
+     <hr>
      <% }) %>
     <% } else { %>
      <li>No Upcoming Events</li>
     <% } %>
   </div><!-- .hood.events -->
+
+</div><!-- .row -->
 
   <% if(user) {} else { %>
     <a href="/user/new">Create an account to keep track of the going ons</a>

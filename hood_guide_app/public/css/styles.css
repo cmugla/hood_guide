@@ -20,6 +20,11 @@ header {
       margin: 0;
       background-color: rgba(0, 0, 0, 0.5);
       padding-top: 8em; }
+  header.hoodpage {
+    text-align: center; }
+    header.hoodpage em {
+      padding: 0 2em;
+      border-bottom: solid 1px black; }
 
 a {
   cursor: pointer; }
@@ -46,5 +51,16 @@ a {
 input[type="submit"] {
   background-color: lightblue;
   color: white; }
+
+.row {
+  width: 80%;
+  margin: 0 auto; }
+
+.hood h1 {
+  font-size: 2em;
+  border-bottom: solid 1px lightblue; }
+.hood section h1 {
+  font-size: 1.5em;
+  border: 0; }
 
 /*# sourceMappingURL=styles.css.map */
