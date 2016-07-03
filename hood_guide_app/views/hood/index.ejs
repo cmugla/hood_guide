@@ -4,7 +4,10 @@
   <% include ../partials/head %>
 </head>
 <body id="hood">
-  <% include ../partials/nav %>
+  <% if(user) { %>
+    <% include ../partials/nav %>
+  <% } %>
+
   <header class="hoodpage">
     <h2>welcome to
       <% if(location) { %>
@@ -17,18 +20,31 @@
         <br>
       <% } %>
       <% if(user){ %>
-        <a href="/user/profile"><%= user.fname %></a></h2>
-        <a href="/user/logout">LOGOUT</a>
+        <%= user.fname %></h2>
       <% } else { %>
         guest!</h2>
-        <p><a class="loginLink">LOGIN</a> <a class="newLink">SIGN UP</a></p>
+        <p><a class="loginLink">LOGIN</a> | <a class="newLink">SIGN UP</a></p>
       <% } %>
   </header>
+
   <div class="row">
     <div class="hood bizs four columns">
-      <h1>NEARBY BIZ's</h1>
-      <section>
-      </section>
+      <h1>ESSENTIALS</h1>
+      <% if(yelp.length) { %>
+        <% yelp.forEach(function( biz ){  %>
+          <section>
+            <h1><%= biz.name %></h1>
+            <img src="<%= biz.image_url %>" alt="" />
+            <img src="<%= biz.rating_img_url_small %>" alt="" class="small"/>
+            <p><%= biz.categories[0][0] %></p>
+            <p><%= biz.snippet_text %></p>
+            <a href="<%= biz.url %>" target="_blank">website &rarr;</a>
+          </section>
+          <hr>
+        <% }) %>
+      <% } else { %>
+        <p>No Results Found.</p>
+      <% } %>
     </div><!-- .hood.bizs -->
 
     <div class="hood news four columns">
@@ -55,26 +71,7 @@
 
     <div class="hood events four columns">
       <h1>RECENT EVENTS</h1>
-      <% if( events.length ) { %>
-       <% events.forEach(function( event ){  %>
-       <section>
-          <h1><%= event.title %></h1>
-          <h2><%= event.date %></h2>
-          <% if(event.image.large) { %>
-          <img src="<%= event.image.large.url %>" alt="">
-          <% } %>
-          <p><%- event.description %></p>
-          <a href="<%= event.url %>" target="_blank">Read full event...</a>
-          <form action=""></form>
-          <% if(user) { %>
-            <button class="save event">Save Event</button>
-          <% } %>
-       </section>
-       <hr>
-       <% }) %>
-      <% } else { %>
-       <li>No Upcoming Events</li>
-      <% } %>
+
     </div><!-- .hood.events -->
 
   </div><!-- .row -->
