@@ -8,7 +8,7 @@ const { createUser,
 
 /* CREATE NEW USER */
 userRouter.get('/new', function(req,res){
-  res.render('user/new', { user : req.session.user });
+  res.render('home/index', { user : req.session.user });
 })
 
 userRouter.post('/new', createUser, loginUser, function(req,res){
@@ -23,7 +23,7 @@ userRouter.post('/new', createUser, loginUser, function(req,res){
 
 /* LOGIN */
 userRouter.get('/login', function(req,res){
-  res.render('user/login', { user : req.session.user });
+  res.render('home/index', { user : req.session.user });
 })
 
 userRouter.post('/login', loginUser, function(req,res){

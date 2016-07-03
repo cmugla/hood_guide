@@ -65,16 +65,26 @@ $(document).ready(function() {
   /* MODALS */
 
   let $loginLink    = $('.loginLink');
+  let $loginModal   = $('#modal-login');
+  let $closeLogin   = $('#modal-login button.closeLogin')
+
   let $newUserLink  = $('.newLink');
+  let $newModal     = $('#modal-new');
+  let $closeNew     = $('#modal-new button.closeNew');
 
   $loginLink.click(toggleLogin);
+  $closeLogin.click(toggleLogin);
+
   $newUserLink.click(toggleNew);
+  $closeNew.click(toggleNew);
 
   function toggleLogin() {
+    $loginModal.toggle();
     console.log("clicked")
   }
 
   function toggleNew() {
+    $newModal.toggle();
     console.log("clicked")
   }
 

@@ -16,6 +16,14 @@
     <% } %>
 
     <form action="/neighborhoods/location" method="get">
+      <select name="borough">Borough
+        <option value="brooklyn">Brooklyn</option>
+        <option value="manhatten">Manhatten</option>
+        <option value="queens">Queens</option>
+        <option value="the bronx">The Bronx</option>
+        <option value="staten island">Staten Island</option>
+      </select>
+
       <input type="text" name="location" placeholder="name of neighborhood">
       <input type="submit" value="Find my Hood">
     </form>
@@ -24,29 +32,31 @@
       <a href="/user/profile">See full profile</a>
       <a href="/user/logout">LOGOUT</a>
     <% } else { %>
-      <a href="/user/login" class="loginLink">LOGIN</a>
-      <a href="/user/new" class="newLink">SIGN UP</a>
+      <a class="loginLink">LOGIN</a>
+      <a class="newLink">SIGN UP</a>
     <% } %>
 
   </header>
 
-  <div class="modal login">
-    <h1>Login</h1>
-    <form action="/user/login" method="post">
-      <label for="">Email:</label>
-      <input type="text" name="email">
-      <br>
-      <label for="">Password:</label>
-      <input type="password" name="password">
-      <br>
-      <input type="submit" value="Login">
-    </form>
-    <button class="loginLink">close</button>
-  </div><!-- .modal.login -->
+  <div id="modal-login">
+    <div class="modal-inner">
+      <h1>Login</h1>
+      <form action="/user/login" method="post">
+        <label for="">Email:</label>
+        <input type="text" name="email">
+        <br>
+        <label for="">Password:</label>
+        <input type="password" name="password">
+        <br>
+        <input type="submit" value="Login">
+      </form>
+      <button class="closeLogin">close</button>
+    </div><!-- .modal-inner -->
+  </div><!-- #modal-login -->
 
-  <div class="modal new">
+  <div id="modal-new">
+    <div class="modal-inner">
     <h1>New User</h1>
-    <div class="new-user">
       <form action="/user/new" method="post">
         <label for="">First Name:</label>
         <input type="text" name="fname">
@@ -65,9 +75,9 @@
         <br>
         <input type="submit" value="Create New User">
       </form>
-      <button class="newLink">close</button>
-    </div><!-- .new-user -->
-  </div>
+      <button class="closeNew">close</button>
+    </div><!-- .modal-inner -->
+  </div><!-- #modal-new -->
 
 </body>
 </html>

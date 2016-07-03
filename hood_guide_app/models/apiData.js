@@ -7,11 +7,18 @@ module.exports = {
 
   showArticle(req,res,next) {
 
+    let neighborhood;
+    if(req.query.location) {
+      neighborhood = req.query.location
+    } else {
+      neighborhood = req.query.borough
+    }
+
     request.get({
       url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
       qs: {
         'api-key': process.env.NYTIMES_KEY,
-        'q': req.query.location,
+        'q': neighborhood,
         'sort': "newest"
       },
     }, (err, response, body)=> {
@@ -27,13 +34,7 @@ module.exports = {
 
   showEvent(req,res,next) {
 
-    let neighborhood;
-    let bkneighborhoods = ['Prospect', 'Kensington', 'Midwood', 'Windsor', 'Terrace', 'Wingate', 'Midwood'];
-    if(req.query.location=='bushwick') {
-      neighborhood = 'brooklyn'
-    } else {
-      neighborhood = req.query.location
-    }
+      let neighborhood = req.query.borough
 
     request.get({
       url: "http://api.evdb.com/json/events/search",
