@@ -6,11 +6,14 @@
 <body>
   <header class="homepage">
 
+    <h1>'Hood Guide</h1>
+
     <% if(user){ %>
       <h2>welcome, <%= user.fname %>!</h2>
+      <a href="/neighborhoods/location?location=<%= user.neighborhood %>">Browse <%= user.neighborhood %></a>
+      <p>or search a new one</p>
     <% } %>
 
-    <h1>'Hood Guide</h1>
     <h2>your first friend in the neighborhood</h2>
 
     <form action="/neighborhoods/location" method="get">
