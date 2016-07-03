@@ -24,10 +24,11 @@ function createUser(req,res,next){
       if(err) throw err;
 
       let userInfo = {
-        fname: req.body.fname,
-        lname: req.body.lname,
+        fname: req.body.fname.toLowerCase(),
+        lname: req.body.lname.toLowerCase(),
         email: email,
         passwordDigest: hash,
+        neighborhood: req.body.neighborhood.toLowerCase(),
         favoriteArticles: [] ,
         favoriteEvents: []
       }
@@ -69,8 +70,6 @@ function loginUser(req,res,next){
 
 }
 
-// function getFavorites(req,res,next){}
-
 function saveArticle(req,res,next){
 
   let articleTitle  = req.query.articleTitle;
@@ -85,9 +84,9 @@ function saveArticle(req,res,next){
         { "email": req.session.user.email },
         { $addToSet: {
           "favoriteArticles": {
-            "Article Title" : articleTitle,
-            "Article Desc"  : articleDesc,
-            "Article Link"  : articleLink
+            "articleTitle" : articleTitle,
+            "articleDesc"  : articleDesc,
+            "articleLink"  : articleLink
           }
         }
       },
@@ -100,5 +99,33 @@ function saveArticle(req,res,next){
   })
 }
 
+function saveEvent(req,res,next){
 
-module.exports = { createUser, loginUser, saveArticle }
+  let eventTitle  = req.query.eventTitle;
+  let eventDesc   = req.query.eventDesc;
+  let eventLink   = req.query.eventLink;
+
+  MongoClient.connect(dbConnection, function(err,db){
+    if(err) throw err;
+
+    db.collection('users')
+      .update(
+        { "email": req.session.user.email },
+        { $addToSet: {
+          "favoriteEvents": {
+            "eventTitle" : eventTitle,
+            "eventDesc"  : eventDesc,
+            "eventLink"  : eventLink
+          }
+        }
+      },
+      function(err, doc){
+        if(err) throw err;
+        console.log(doc)
+        next()
+      }
+    )
+  })
+}
+
+module.exports = { createUser, loginUser, saveArticle, saveEvent }

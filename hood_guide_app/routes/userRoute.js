@@ -1,7 +1,10 @@
+'use strict'
+
 const userRouter          = require('express').Router()
 const { createUser,
         loginUser,
-        saveArticle }     = require('../models/user')
+        saveArticle,
+        saveEvent }       = require('../models/user')
 
 /* CREATE NEW USER */
 userRouter.get('/new', function(req,res){
@@ -17,7 +20,6 @@ userRouter.post('/new', createUser, loginUser, function(req,res){
     res.redirect('/')
   })
 })
-
 
 /* LOGIN */
 userRouter.get('/login', function(req,res){
@@ -41,15 +43,21 @@ userRouter.get('/logout', function(req,res){
   })
 })
 
-/* SAVE ARTICLES */
-userRouter.get('/save', saveArticle, function(req,res){
-  res.redirect('/')
-})
-
 /* USER PROFILE */
 userRouter.get('/profile', function(req,res){
   res.render('user/profile', { user : req.session.user })
 })
+
+/* SAVE EVENTS */
+userRouter.get('/save-event', saveEvent, function(req,res){
+  res.redirect('/')
+})
+
+/* SAVE ARTICLES */
+userRouter.get('/save-article', saveArticle, function(req,res){
+  res.redirect('/')
+})
+
 
 
 module.exports = userRouter;

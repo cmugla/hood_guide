@@ -1,21 +1,14 @@
 $(document).ready(function() {
 
-  console.log("you're the bext")
-
-  // click event
-  // ajax call to route
-    // set data key to "new thing" and its value will be the object
-    // in function, access that object with req.query["new thing"]
-
+  console.log("you're the best")
 
   let $saveArticleBtn = $('.save.article');
   let $saveEventBtn   = $('.save.event');
 
-
-  $saveArticleBtn.click(saveArticle)
+  $saveArticleBtn.click(saveArticle);
+  $saveEventBtn.click(saveEvent);
 
   function saveArticle() {
-
     let article       = $(this).closest('section')
     let articleTitle  = article.children('h1').text();
     let articleDesc   = article.children('p').text();
@@ -24,7 +17,7 @@ $(document).ready(function() {
     console.log(articleTitle)
 
     $.ajax({
-      url: '/user/save',
+      url: '/user/save-article',
       type: 'GET',
       dataType: 'json',
       data: {
@@ -39,7 +32,32 @@ $(document).ready(function() {
         console.log(err)
       }
     })
+  }
 
+  function saveEvent() {
+    let event       = $(this).closest('section');
+    let eventTitle  = event.children('h1').text();
+    let eventDesc   = event.children('p').text();
+    let eventLink   = event.children('a').attr('href');
+
+    console.log(eventTitle, eventDesc, eventLink)
+
+    $.ajax({
+      url: '/user/save-event',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        'eventTitle'  : eventTitle,
+        'eventDesc'   : eventDesc,
+        'eventLink'   : eventLink
+      },
+      success: function(data) {
+        console.log(data)
+      },
+      error: function(err) {
+        console.log(err)
+      }
+    })
   }
 
 

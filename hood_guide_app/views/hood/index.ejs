@@ -7,7 +7,7 @@
 
   <h2>welcome,
     <% if(user){ %>
-      <%= user.fname %> <%= user.lname %>
+      <a href="/user/profile"><%= user.fname %></a>
     <% } else { %>
       guest!
       <a href="/user/login">LOGIN</a>
@@ -25,14 +25,40 @@
         <% } %>
         <p><%- article.lead_paragraph %></p>
         <a href="<%= article.web_url %>" target="_blank">Read full article...</a>
-        <button class="save article">Save Article</button>
+        <% if(user) { %>
+          <button class="save article">Save Article</button>
+        <% } %>
      </section>
      <% }) %>
     <% }else{ %>
      <li>No Results found</li>
     <% } %>
-  </div><!-- .news -->
+  </div><!-- .hood.news -->
 
-<a href="/user/new">Create an account to keep track of the going ons</a>
+  <div class="hood events">
+    <h1>RECENT EVENTS</h1>
+    <% if( events.length ) { %>
+     <% events.forEach(function( event ){  %>
+     <section>
+        <h1><%= event.title %></h1>
+        <% if(event.image) { %>
+        <img src="<%= event.image.small.url %>" alt="">
+        <% } %>
+        <p><%- event.description %></p>
+        <a href="<%= event.url %>" target="_blank">Read full event...</a>
+        <form action=""></form>
+        <% if(user) { %>
+          <button class="save event">Save Event</button>
+        <% } %>
+     </section>
+     <% }) %>
+    <% } else { %>
+     <li>No Upcoming Events</li>
+    <% } %>
+  </div><!-- .hood.events -->
+
+  <% if(user) {} else { %>
+    <a href="/user/new">Create an account to keep track of the going ons</a>
+  <% } %>
 </body>
 </html>
