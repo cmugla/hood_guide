@@ -11,6 +11,10 @@ $(document).ready(function() {
   $saveEventBtn.click(saveEvent);
 
   function saveArticle() {
+    $(this).text('Saved!')
+           .css({'background-color':'red',
+                 'color':'white'})
+
     let article       = $(this).closest('section')
     let articleTitle  = article.children('h1').text();
     let articleDesc   = article.children('p').text();
@@ -37,6 +41,10 @@ $(document).ready(function() {
   }
 
   function saveEvent() {
+    $(this).text('Saved!')
+           .css({'background-color':'red',
+                 'color':'white'})
+
     let event       = $(this).closest('section');
     let eventTitle  = event.children('h1').text();
     let eventDesc   = event.children('p').text();

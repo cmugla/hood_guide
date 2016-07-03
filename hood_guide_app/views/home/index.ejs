@@ -7,11 +7,15 @@
   <header class="homepage">
     <div class="overlay">
 
+    <% if(user) { %>
+      <% include ../partials/nav %>
+    <% } %>
+
     <h1>'Hood Guide</h1>
     <em>your first friend in the neighborhood</em>
 
     <% if(user){ %>
-      <h2>welcome, <%= user.fname %>!</h2>
+      <br>
       <a href="/neighborhoods/location?location=<%= user.neighborhood %>&borough=<%= user.borough %>">Browse <%= user.neighborhood %></a>
       <p>or search a new one</p>
     <% } %>
@@ -29,10 +33,7 @@
       <input type="submit" value="Find my Hood">
     </form>
 
-    <% if(user) { %>
-      <a href="/user/profile">See full profile</a>
-      <a href="/user/logout">LOGOUT</a>
-    <% } else { %>
+    <% if(!user) { %>
       <a class="loginLink">LOGIN</a>
       <a class="newLink">SIGN UP</a>
     <% } %>

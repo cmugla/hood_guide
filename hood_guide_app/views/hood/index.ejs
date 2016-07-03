@@ -3,83 +3,125 @@
 <head>
   <% include ../partials/head %>
 </head>
-<body>
-<header class="hoodpage">
-  <h2>welcome to
-    <% if(location) { %>
-      <br>
-      <em><%= location %>,</em>
-      <br>
-    <% } else { %>
-      <br>
-      <em><%= borough %>,</em>
-      <br>
-    <% } %>
-    <% if(user){ %>
-      <a href="/user/profile"><%= user.fname %></a></h2>
-      <a href="/user/logout">LOGOUT</a>
-    <% } else { %>
-      guest!</h2>
-      <p><a href="/user/login">LOGIN</a></p>
-    <% } %>
-</header>
-<div class="row">
-  <div class="hood bizs four columns">
-    <h1>NEARBY BIZ's</h1>
-    <section>
+<body id="hood">
+  <% include ../partials/nav %>
+  <header class="hoodpage">
+    <h2>welcome to
+      <% if(location) { %>
+        <br>
+        <em><%= location %>,</em>
+        <br>
+      <% } else { %>
+        <br>
+        <em><%= borough %>,</em>
+        <br>
+      <% } %>
+      <% if(user){ %>
+        <a href="/user/profile"><%= user.fname %></a></h2>
+        <a href="/user/logout">LOGOUT</a>
+      <% } else { %>
+        guest!</h2>
+        <p><a class="loginLink">LOGIN</a> <a class="newLink">SIGN UP</a></p>
+      <% } %>
+  </header>
+  <div class="row">
+    <div class="hood bizs four columns">
+      <h1>NEARBY BIZ's</h1>
+      <section>
+      </section>
+    </div><!-- .hood.bizs -->
 
-    </section>
-  </div><!-- .hood.bizs -->
+    <div class="hood news four columns">
+      <h1>RECENT NEWS</h1>
+      <% if( articleDocs.length ) { %>
+       <% articleDocs.forEach(function( article ){  %>
+       <section>
+          <h1><%= article.headline.main %></h1>
+          <% if(article.multimedia[1]) { %>
+          <img src="http://www.nytimes.com/<%= article.multimedia[1].url %>" alt="">
+          <% } %>
+          <p><%- article.lead_paragraph %></p>
+          <a href="<%= article.web_url %>" target="_blank">Read full article...</a>
+          <% if(user) { %>
+            <button class="save article">Save Article</button>
+          <% } %>
+       </section>
+       <hr>
+       <% }) %>
+      <% }else{ %>
+       <li>No Results found</li>
+      <% } %>
+    </div><!-- .hood.news -->
 
-  <div class="hood news four columns">
-    <h1>RECENT NEWS</h1>
-    <% if( articleDocs.length ) { %>
-     <% articleDocs.forEach(function( article ){  %>
-     <section>
-        <h1><%= article.headline.main %></h1>
-        <% if(article.multimedia[0]) { %>
-        <img src="http://www.nytimes.com/<%= article.multimedia[0].url %>" alt="">
-        <% } %>
-        <p><%- article.lead_paragraph %></p>
-        <a href="<%= article.web_url %>" target="_blank">Read full article...</a>
-        <% if(user) { %>
-          <button class="save article">Save Article</button>
-        <% } %>
-     </section>
-     <hr>
-     <% }) %>
-    <% }else{ %>
-     <li>No Results found</li>
-    <% } %>
-  </div><!-- .hood.news -->
+    <div class="hood events four columns">
+      <h1>RECENT EVENTS</h1>
+      <% if( events.length ) { %>
+       <% events.forEach(function( event ){  %>
+       <section>
+          <h1><%= event.title %></h1>
+          <h2><%= event.date %></h2>
+          <% if(event.image.large) { %>
+          <img src="<%= event.image.large.url %>" alt="">
+          <% } %>
+          <p><%- event.description %></p>
+          <a href="<%= event.url %>" target="_blank">Read full event...</a>
+          <form action=""></form>
+          <% if(user) { %>
+            <button class="save event">Save Event</button>
+          <% } %>
+       </section>
+       <hr>
+       <% }) %>
+      <% } else { %>
+       <li>No Upcoming Events</li>
+      <% } %>
+    </div><!-- .hood.events -->
 
-  <div class="hood events four columns">
-    <h1>RECENT EVENTS</h1>
-    <% if( events.length ) { %>
-     <% events.forEach(function( event ){  %>
-     <section>
-        <h1><%= event.title %></h1>
-        <% if(event.image) { %>
-        <img src="<%= event.image.small.url %>" alt="">
-        <% } %>
-        <p><%- event.description %></p>
-        <a href="<%= event.url %>" target="_blank">Read full event...</a>
-        <form action=""></form>
-        <% if(user) { %>
-          <button class="save event">Save Event</button>
-        <% } %>
-     </section>
-     <hr>
-     <% }) %>
-    <% } else { %>
-     <li>No Upcoming Events</li>
-    <% } %>
-  </div><!-- .hood.events -->
-
-</div><!-- .row -->
+  </div><!-- .row -->
 
   <% if(user) {} else { %>
     <a href="/user/new">Create an account to keep track of the going ons</a>
   <% } %>
+
+  <div id="modal-login">
+    <div class="modal-inner">
+      <h1>Login</h1>
+      <form action="/user/login" method="post">
+        <label for="">Email:</label>
+        <input type="text" name="email">
+        <label for="">Password:</label>
+        <input type="password" name="password">
+        <input type="submit" value="Login">
+      </form>
+      <button class="closeLogin">close</button>
+    </div><!-- .modal-inner -->
+  </div><!-- #modal-login -->
+
+  <div id="modal-new">
+    <div class="modal-inner">
+    <h1>New User</h1>
+      <form action="/user/new" method="post">
+        <label for="">First Name:</label>
+        <input type="text" name="fname">
+        <label for="">Last Name:</label>
+        <input type="text" name="lname">
+        <label for="">e-mail:</label>
+        <input type="text" name="email">
+        <label for="">Password:</label>
+        <input type="password" name="password">
+        <label for="">Neighborhood:</label>
+        <input type="text" name="neighborhood">
+        <select name="borough">
+          <option value="brooklyn">Brooklyn</option>
+          <option value="manhatten">Manhatten</option>
+          <option value="queens">Queens</option>
+          <option value="the bronx">The Bronx</option>
+          <option value="staten island">Staten Island</option>
+        </select>
+        <input type="submit" value="Create New User">
+      </form>
+      <button class="closeNew">close</button>
+    </div><!-- .modal-inner -->
+  </div><!-- #modal-new -->
 </body>
 </html>
