@@ -2,6 +2,8 @@ $(document).ready(function() {
 
   console.log("you're the best")
 
+  /* SAVING TO USER PROFILE */
+
   let $saveArticleBtn = $('.save.article');
   let $saveEventBtn   = $('.save.event');
 
@@ -58,6 +60,22 @@ $(document).ready(function() {
         console.log(err)
       }
     })
+  }
+
+  /* MODALS */
+
+  let $loginLink    = $('.loginLink');
+  let $newUserLink  = $('.newLink');
+
+  $loginLink.click(toggleLogin);
+  $newUserLink.click(toggleNew);
+
+  function toggleLogin() {
+    console.log("clicked")
+  }
+
+  function toggleNew() {
+    console.log("clicked")
   }
 
 

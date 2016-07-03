@@ -7,14 +7,13 @@
   <header class="homepage">
 
     <h1>'Hood Guide</h1>
+    <h2>your first friend in the neighborhood</h2>
 
     <% if(user){ %>
       <h2>welcome, <%= user.fname %>!</h2>
       <a href="/neighborhoods/location?location=<%= user.neighborhood %>">Browse <%= user.neighborhood %></a>
       <p>or search a new one</p>
     <% } %>
-
-    <h2>your first friend in the neighborhood</h2>
 
     <form action="/neighborhoods/location" method="get">
       <input type="text" name="location" placeholder="name of neighborhood">
@@ -23,11 +22,52 @@
 
     <% if(user) { %>
       <a href="/user/profile">See full profile</a>
+      <a href="/user/logout">LOGOUT</a>
     <% } else { %>
-      <a href="/user/login">LOGIN</a>
-      <a href="/user/new">SIGN UP</a>
+      <a href="/user/login" class="loginLink">LOGIN</a>
+      <a href="/user/new" class="newLink">SIGN UP</a>
     <% } %>
 
   </header>
+
+  <div class="modal login">
+    <h1>Login</h1>
+    <form action="/user/login" method="post">
+      <label for="">Email:</label>
+      <input type="text" name="email">
+      <br>
+      <label for="">Password:</label>
+      <input type="password" name="password">
+      <br>
+      <input type="submit" value="Login">
+    </form>
+    <button class="loginLink">close</button>
+  </div><!-- .modal.login -->
+
+  <div class="modal new">
+    <h1>New User</h1>
+    <div class="new-user">
+      <form action="/user/new" method="post">
+        <label for="">First Name:</label>
+        <input type="text" name="fname">
+        <br>
+        <label for="">Last Name:</label>
+        <input type="text" name="lname">
+        <br>
+        <label for="">e-mail:</label>
+        <input type="text" name="email">
+        <br>
+        <label for="">Password:</label>
+        <input type="password" name="password">
+        <br>
+        <label for="">Neighborhood:</label>
+        <input type="text" name="neighborhood">
+        <br>
+        <input type="submit" value="Create New User">
+      </form>
+      <button class="newLink">close</button>
+    </div><!-- .new-user -->
+  </div>
+
 </body>
 </html>

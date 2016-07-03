@@ -13,4 +13,7 @@ header {
     text-align: center;
     background-color: lightblue; }
 
+.modal {
+  display: none; }
+
 /*# sourceMappingURL=styles.css.map */

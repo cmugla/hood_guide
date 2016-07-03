@@ -8,6 +8,7 @@
   <h2>welcome,
     <% if(user){ %>
       <a href="/user/profile"><%= user.fname %></a>
+      <a href="/user/logout">LOGOUT</a>
     <% } else { %>
       guest!
       <a href="/user/login">LOGIN</a>
