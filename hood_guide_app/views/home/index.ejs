@@ -5,13 +5,14 @@
 </head>
 <body>
   <header class="homepage">
+    <div class="overlay">
 
     <h1>'Hood Guide</h1>
-    <h2>your first friend in the neighborhood</h2>
+    <em>your first friend in the neighborhood</em>
 
     <% if(user){ %>
       <h2>welcome, <%= user.fname %>!</h2>
-      <a href="/neighborhoods/location?location=<%= user.neighborhood %>">Browse <%= user.neighborhood %></a>
+      <a href="/neighborhoods/location?location=<%= user.neighborhood %>&borough=<%= user.borough %>">Browse <%= user.neighborhood %></a>
       <p>or search a new one</p>
     <% } %>
 
@@ -36,6 +37,7 @@
       <a class="newLink">SIGN UP</a>
     <% } %>
 
+    </div><!-- .overlay -->
   </header>
 
   <div id="modal-login">
@@ -44,10 +46,8 @@
       <form action="/user/login" method="post">
         <label for="">Email:</label>
         <input type="text" name="email">
-        <br>
         <label for="">Password:</label>
         <input type="password" name="password">
-        <br>
         <input type="submit" value="Login">
       </form>
       <button class="closeLogin">close</button>
@@ -60,19 +60,21 @@
       <form action="/user/new" method="post">
         <label for="">First Name:</label>
         <input type="text" name="fname">
-        <br>
         <label for="">Last Name:</label>
         <input type="text" name="lname">
-        <br>
         <label for="">e-mail:</label>
         <input type="text" name="email">
-        <br>
         <label for="">Password:</label>
         <input type="password" name="password">
-        <br>
         <label for="">Neighborhood:</label>
         <input type="text" name="neighborhood">
-        <br>
+        <select name="borough">
+          <option value="brooklyn">Brooklyn</option>
+          <option value="manhatten">Manhatten</option>
+          <option value="queens">Queens</option>
+          <option value="the bronx">The Bronx</option>
+          <option value="staten island">Staten Island</option>
+        </select>
         <input type="submit" value="Create New User">
       </form>
       <button class="closeNew">close</button>

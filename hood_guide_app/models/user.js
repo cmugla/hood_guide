@@ -29,6 +29,7 @@ function createUser(req,res,next){
         email: email,
         passwordDigest: hash,
         neighborhood: req.body.neighborhood.toLowerCase(),
+        borough: req.body.borough,
         favoriteArticles: [] ,
         favoriteEvents: []
       }

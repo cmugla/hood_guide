@@ -79,12 +79,12 @@ $(document).ready(function() {
   $closeNew.click(toggleNew);
 
   function toggleLogin() {
-    $loginModal.toggle();
+    $loginModal.fadeToggle('fast');
     console.log("clicked")
   }
 
   function toggleNew() {
-    $newModal.toggle();
+    $newModal.fadeToggle('fast');
     console.log("clicked")
   }
 
