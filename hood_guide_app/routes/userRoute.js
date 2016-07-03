@@ -42,9 +42,13 @@ userRouter.get('/logout', function(req,res){
 })
 
 /* SAVE ARTICLES */
-
 userRouter.get('/save', saveArticle, function(req,res){
   res.redirect('/')
+})
+
+/* USER PROFILE */
+userRouter.get('/profile', function(req,res){
+  res.render('user/profile', { user : req.session.user })
 })
 
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><%= user.fname %>'s Profile</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+  <h1><%= user.fname %> <%= user.lname %></h1>
+
+  <h2><%= user.email %></h2>
+
+  <h2>FAVORITE ARTICLES</h2>
+  <% if(user.favoriteArticles.length) { %>
+
+    <% user.favoriteArticles.forEach(function(article){ %>
+      <h3><%= article["Article Title"] %></h3>
+      <p><%= article["Article Desc"] %></p>
+      <a href="<%= article['Article Link'] %>">Read Full Article</a>
+    <% }) %>
+
+  <% } else { %>
+    <p>No favorites yet</p>
+  <% } %>
+
+  <h2>EVENTS I'M INTERESTED IN</h2>
+
+  <% if(user.favoriteEvents.length) { %>
+
+    <% user.favoriteEvents.forEach(function(event){ %>
+      <h3><%= event.eventName %></h3>
+    <% }) %>
+  <% } else { %>
+    <p>No favorites yet</p>
+  <% } %>
+
+
+</body>
+</html>

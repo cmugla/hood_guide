@@ -77,15 +77,6 @@ function saveArticle(req,res,next){
   let articleDesc   = req.query.articleDesc;
   let articleLink   = req.query.articleLink;
 
-  console.log(articleTitle, articleDesc, articleLink);
-
-  let savedArticle = {}
-  savedArticle.articleTitle = articleTitle;
-  savedArticle.articleDesc  = articleDesc;
-  savedArticle.articleLink  = articleLink;
-
-  console.log(req.session.user)
-
   MongoClient.connect(dbConnection, function(err,db){
     if(err) throw err;
 
