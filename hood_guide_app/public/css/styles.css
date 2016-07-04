@@ -37,7 +37,9 @@ input[type="submit"] {
     background: white;
     padding: 1em; }
     #modal-login .modal-inner input[type="submit"], #modal-login .modal-inner button, #modal-new .modal-inner input[type="submit"], #modal-new .modal-inner button {
-      float: right; }
+      display: block;
+      float: right;
+      clear: both; }
 
 nav {
   width: 100%;

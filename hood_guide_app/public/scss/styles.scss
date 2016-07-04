@@ -69,7 +69,9 @@ input[type="submit"] {
     background: $color-bg-modal;
     padding: 1em;
     & input[type="submit"], button {
+      display: block;
       float: right;
+      clear: both;
     }
   }
 }
