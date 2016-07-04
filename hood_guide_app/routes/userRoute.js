@@ -4,7 +4,8 @@ const userRouter          = require('express').Router()
 const { createUser,
         loginUser,
         saveArticle,
-        saveEvent }       = require('../models/user')
+        saveEvent,
+        checkDB }         = require('../models/user')
 
 /* CREATE NEW USER */
 userRouter.get('/new', function(req,res){
@@ -44,7 +45,7 @@ userRouter.get('/logout', function(req,res){
 })
 
 /* USER PROFILE */
-userRouter.get('/profile', function(req,res){
+userRouter.get('/profile', checkDB, function(req,res){
   res.render('user/profile', { user : req.session.user })
 })
 
