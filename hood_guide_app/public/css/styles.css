@@ -1,20 +1,90 @@
+/* VARIABLES */
+/*
+  _   _  ._   _  ._ _. |
+ (_| (/_ | | (/_ | (_| |
+  _|
+*/
 body {
   width: 100%;
   margin: 0;
   padding: 0;
   letter-spacing: 0.05em; }
 
-section {
-  padding: 1em;
-  background-color: #CCC; }
-  section img {
-    width: 100%; }
-    section img.small {
-      width: 40%;
-      margin: 0 auto; }
-  section a {
-    text-align: right; }
+input[type="submit"] {
+  background-color: darkcyan;
+  color: white; }
+  input[type="submit"]:hover {
+    color: cyan;
+    border-color: cyan; }
 
+#modal-login, #modal-new {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999; }
+  #modal-login .modal-inner, #modal-new .modal-inner {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    background: white;
+    padding: 1em; }
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: white solid 1px; }
+  nav h2 {
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1em;
+    text-align: left;
+    float: left;
+    text-transform: capitalize;
+    letter-spacing: 0.05em; }
+  nav ul {
+    margin-top: 1em;
+    margin-bottom: 0;
+    float: right;
+    text-align: right; }
+    nav ul li {
+      list-style-type: none;
+      display: inline-block;
+      padding: 0 1em;
+      text-decoration: none; }
+      nav ul li:first-child {
+        border-right: solid 1px white; }
+  nav .row {
+    width: 100%; }
+
+/*
+ _|_    ._   _   _  ._ _. ._  |_
+  |_ \/ |_) (_) (_| | (_| |_) | | \/
+     /  |        _|       |       /
+*/
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white; }
+  a:hover {
+    color: #ccc; }
+
+h1 {
+  text-transform: capitalize; }
+
+/*
+ |_   _   _.  _|  _  ._ _
+ | | (/_ (_| (_| (/_ | _>
+*/
 header {
   width: 100%;
   margin: 0; }
@@ -41,85 +111,48 @@ header {
       padding-top: 8em; }
   header.hoodpage {
     text-align: center;
-    margin-top: 4em; }
+    padding: 4em 0;
+    margin-bottom: 2em;
+    font-weight: lighter;
+    background-color: steelblue;
+    color: white; }
     header.hoodpage em {
       padding: 0 2em;
-      border-bottom: solid 1px black; }
+      border-bottom: solid 1px white;
+      text-transform: capitalize; }
 
-a {
-  cursor: pointer;
-  text-decoration: none; }
-
-h1 {
-  text-transform: capitalize; }
-
-#modal-login, #modal-new {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999; }
-  #modal-login .modal-inner, #modal-new .modal-inner {
-    width: 400px;
-    height: 400px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -150px;
-    margin-left: -200px;
-    background: white; }
-
-input[type="submit"] {
-  background-color: lightblue;
-  color: white; }
-
-.row {
-  width: 80%;
-  margin: 0 auto; }
+/*
+  _  _  ._ _|_  _. o ._   _  ._ _
+ (_ (_) | | |_ (_| | | | (/_ | _>
+*/
+section {
+  padding: 1em; }
+  section img {
+    width: 100%; }
+    section img.small {
+      width: 40%;
+      margin: 0 auto; }
+  section a {
+    text-align: right; }
 
 .hood h1 {
   font-size: 2em;
-  border-bottom: solid 1px lightblue; }
+  border-bottom: solid 1px lightblue;
+  color: lightblue; }
 .hood section h1 {
   font-size: 1.5em;
   border: 0; }
 
-nav {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-bottom: white solid 1px; }
-  nav h2 {
-    margin-left: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    font-size: 1em;
-    text-align: left;
-    float: left;
-    text-transform: capitalize; }
-  nav ul {
-    margin-top: 1em;
-    margin-bottom: 0;
-    margin-right: 1em;
-    float: right;
-    text-align: right;
-    width: 70%; }
-    nav ul li {
-      list-style-type: none;
-      display: inline-block;
-      padding: 0 1em;
-      text-decoration: none; }
-      nav ul li:first-child {
-        border-right: solid 1px white; }
-
 #hood nav {
   border-bottom-color: #ccc;
   background-color: rgba(255, 255, 255, 0.8); }
-#hood h2 {
-  text-transform: capitalize; }
+#hood .row {
+  width: 80%;
+  margin: 0 auto; }
+
+#profile a {
+  color: darkcyan; }
+  #profile a:hover {
+    color: cyan; }
 
 /*# sourceMappingURL=styles.css.map */

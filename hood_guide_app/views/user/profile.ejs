@@ -5,47 +5,42 @@
 
   <title><%= user.fname %>'s Profile</title>
 </head>
-<body>
-<div class="user-info">
+<body id="profile">
 
-</div>
-  <h1><%= user.fname %> <%= user.lname %></h1>
+  <div class="row">
+    <div class="six columns">
+      <h1><%= user.fname %> <%= user.lname %></h1>
+      <h3><%= user.email %></h3>
+      <h2><a href="/neighborhoods/location?location=<%= user.neighborhood %>&borough=<%= user.borough %>"><%= user.neighborhood %></a></h2>
+      <a href="/user/logout">LOGOUT</a>
+    </div><!-- user-info -->
 
-  <h3><%= user.email %></h3>
+    <div class="six columns">
+      <h2>FAVORITE ARTICLES</h2>
+      <% if(user.favoriteArticles.length) { %>
+        <% user.favoriteArticles.forEach(function(article){ %>
+          <h3><%= article.articleTitle %></h3>
+          <p><%= article.articleDesc %></p>
+          <a href="<%= article.articleLink %>">Read Full Article</a>
+          <hr>
+        <% }) %>
+      <% } else { %>
+        <p>No favorites yet</p>
+      <% } %>
 
-  <h2><a href="/neighborhoods/location?location=<%= user.neighborhood %>&borough=<%= user.borough %>"><%= user.neighborhood %></a></h2>
-
-  <!-- todo:
-              save neighborhood name
-              link to neighborhood name -->
-
-  <h2>FAVORITE ARTICLES</h2>
-  <% if(user.favoriteArticles.length) { %>
-
-    <% user.favoriteArticles.forEach(function(article){ %>
-      <h3><%= article.articleTitle %></h3>
-      <p><%= article.articleDesc %></p>
-      <a href="<%= article.articleLink %>">Read Full Article</a>
-    <% }) %>
-
-  <% } else { %>
-    <p>No favorites yet</p>
-  <% } %>
-
-  <h2>EVENTS I'M INTERESTED IN</h2>
-
-  <% if(user.favoriteEvents.length) { %>
-
-    <% user.favoriteEvents.forEach(function(event){ %>
-      <h3><%= event.eventTitle %></h3>
-      <p><%= event.eventDesc %></p>
-      <a href="<%= event.eventLink %>">Check Tickets</a>
-    <% }) %>
-  <% } else { %>
-    <p>No favorites yet</p>
-  <% } %>
-
-  <a href="/user/logout">LOGOUT</a>
+      <h2>MY EVENTS</h2>
+      <% if(user.favoriteEvents.length) { %>
+        <% user.favoriteEvents.forEach(function(event){ %>
+          <h3><%= event.eventTitle %></h3>
+          <p><%= event.eventDesc %></p>
+          <a href="<%= event.eventLink %>">Check Tickets</a>
+          <hr>
+        <% }) %>
+      <% } else { %>
+        <p>No favorites yet</p>
+      <% } %>
+    </div><!-- faves -->
+  </div><!-- .row -->
 
 </body>
 </html>

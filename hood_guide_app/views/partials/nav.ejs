@@ -1,7 +1,11 @@
 <nav>
-  <h2>welcome, <%= user.fname %>!</h2>
-  <ul>
-    <li><a href="/user/profile">Profile</a></li>
-    <li><a href="/user/logout">LogOut</a></li>
-  </ul>
+  <div class="row">
+    <div class="three columns">
+      <h2>welcome, <%= user.fname %>!</h2>
+    </div>
+    <ul class="nine columns">
+      <li><a href="/user/profile">Profile</a></li>
+      <li><a href="/user/logout">LogOut</a></li>
+    </ul>
+  </div><!-- .row -->
 </nav>
