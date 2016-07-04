@@ -1,8 +1,8 @@
 /* VARIABLES */
 
 //colors
-$color-btn: darkcyan;
-$color-btn-hover: cyan;
+$color-btn: rgba(220,20,60,1.0);
+$color-btn-hover: rgba(220,20,60,0.8);
 $color-a: white;
 $color-a-hover: #ccc;
 $color-light-text: white;
@@ -18,7 +18,7 @@ $color-border-light-nav: #ccc;
 $color-light-nav: white;
 
 $color-overlay: rgba(0,0,0,0.5);
-$color-light-overlay: rgba(255,255,255,0.8);
+$color-light-overlay: rgba(220,20,60,0.9);
 $color-bg-modal: white;
 $color-bg-header: steelblue;
 
@@ -43,11 +43,11 @@ input[type="submit"] {
   background-color: $color-btn;
   color: $color-light-text;
   &:hover {
-    color: $color-btn-hover;
-    border-color: $color-btn-hover;
+    background-color: $color-btn-hover;
+    color: $color-light-text;
+    border-color: $color-light-text;
   }
 }
-
 
 #modal-login, #modal-new {
   display: none;
@@ -60,19 +60,23 @@ input[type="submit"] {
   z-index: 9999;
 
   & .modal-inner {
-    width: 400px;
+    width: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -150px;
-    margin-left: -200px;
+    margin-top: -200px;
+    margin-left: -250px;
     background: $color-bg-modal;
     padding: 1em;
+    & input[type="submit"], button {
+      float: right;
+    }
   }
 }
 
 nav {
   width: 100%;
+  height: 3.5em;
   position: fixed;
   top: 0;
   left: 0;
@@ -120,7 +124,8 @@ a {
   color: $color-a;
 
   &:hover {
-    color: $color-a-hover;
+    color: $color-a;
+    text-decoration: underline;
   }
 }
 
@@ -134,8 +139,8 @@ h1 {
 */
 
 header {
-  width   : 100%;
-  margin  : 0;
+  width: 100%;
+  margin: 0;
 
   &.homepage {
     height: 100vh;
@@ -144,6 +149,7 @@ header {
     background-image: $bg-homepage;
     background-repeat: no-repeat;
     background-size: cover;
+
     & h1 {
       padding-bottom: 0;
       margin-bottom: 0;
@@ -163,18 +169,25 @@ header {
       padding-top: 8em;
     }
   }
+
   &.hoodpage {
     text-align: center;
     padding: 4em 0;
     margin-bottom: 2em;
     font-weight: lighter;
-    background-color: $color-bg-header;
+    // background-color: $color-bg-header;
+    background: #e53935; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #e53935 , #e35d5b); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #e53935 , #e35d5b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: $color-light-text;
 
     & em {
       padding: 0 2em;
       border-bottom: solid 1px $color-border-header;
       text-transform: capitalize;
+    }
+    &.user {
+      padding-top: 7.5em;
     }
   }
 }
@@ -184,51 +197,116 @@ header {
  (_ (_) | | |_ (_| | | | (/_ | _>
 */
 
-section {
-  padding:1em;
-
-  & img {
-    width: 100%;
-    &.small {
-      width: 40%;
-      margin:0 auto;
-    }
-  }
-  & a {
-    text-align: right;
-  }
-}
-
 .hood {
+  padding:1em;
   & h1 {
     font-size: 2em;
-    border-bottom: solid 1px $color-border-subheader;
-    color: $color-border-subheader;
+    border-bottom: solid 1px $color-bg-header;
+    color: $color-bg-header;
   }
   & section {
+    padding:1em;
+
     & h1 {
       font-size: 1.5em;
       border: 0;
     }
+    & a {
+      color: $color-btn;
+      &:hover {
+        color: $color-btn-hover;
+      }
+    }
   }
+}
+
+.bizs {
+  border-right: dotted 1px $color-border-biz;
+  padding-right: 2em;
+
+  & section {
+  text-align: center;
+
+    & img {
+      width: 70%;
+      &.small {
+        width: 30%;
+      }
+    }
+  }
+}
+
+.news section {
+  & img {
+    width: 100%;
+  }
+}
+
+.events {
+  border-left: dotted 1px $color-border-biz;
+  padding-left: 2em;
 }
 
 #hood {
   & nav {
     border-bottom-color: $color-border-light-nav;
     background-color: $color-light-overlay;
+    color: $color-light-text;
   }
   & .row {
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
   }
 }
 
 #profile {
+  margin-top: 5em;
   & a {
     color: $color-btn;
+    text-transform: capitalize;
+
     &:hover {
       color: $color-btn-hover;
     }
+  }
+  & .row {
+    width: 80%;
+    margin: 0 auto;
+  }
+  & nav {
+    border-bottom-color: $color-border-light-nav;
+    background-color: $color-light-overlay;
+    color: $color-light-text;
+    & a {
+      color: $color-light-text;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.faves {
+  margin-top: 12em;
+  & h2 {
+    font-size: 2em;
+    border-bottom: solid 1px $color-btn;
+  }
+  & h3 {
+    font-size: 1.5em;
+  }
+}
+
+
+/*
+   __
+  /  \ ._ _   _   _| o  _.
+ | (|/ | | | (/_ (_| | (_|
+  \__
+*/
+
+@media only screen and (max-width: 560px) {
+  nav h2 {
+    display: none;
   }
 }

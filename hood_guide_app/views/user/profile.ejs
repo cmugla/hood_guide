@@ -7,6 +7,10 @@
 </head>
 <body id="profile">
 
+  <% if(user) { %>
+    <% include ../partials/nav %>
+  <% } %>
+
   <div class="row">
     <div class="six columns">
       <h1><%= user.fname %> <%= user.lname %></h1>
@@ -15,7 +19,7 @@
       <a href="/user/logout">LOGOUT</a>
     </div><!-- user-info -->
 
-    <div class="six columns">
+    <div class="six columns faves">
       <h2>FAVORITE ARTICLES</h2>
       <% if(user.favoriteArticles.length) { %>
         <% user.favoriteArticles.forEach(function(article){ %>
@@ -28,7 +32,7 @@
         <p>No favorites yet</p>
       <% } %>
 
-      <h2>MY EVENTS</h2>
+      <h2>FAVORITE EVENTS</h2>
       <% if(user.favoriteEvents.length) { %>
         <% user.favoriteEvents.forEach(function(event){ %>
           <h3><%= event.eventTitle %></h3>

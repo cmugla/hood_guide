@@ -73,6 +73,7 @@ module.exports = {
         url = 'https://api.yelp.com/v2/search',
         parameters = {
             'location'                : neighborhood,
+            'limit'                   : 10,
             'oauth_consumer_key'      : process.env.YELP_CONSUMERKEY,
             'oauth_token'             : process.env.YELP_TOKEN,
             'oauth_nonce'             : n(),

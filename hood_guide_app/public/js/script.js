@@ -96,5 +96,13 @@ $(document).ready(function() {
     console.log("clicked")
   }
 
+  /* NAV BAR SPACING */
+
+  let $nav         = $('nav');
+  let $hoodHeader  = $('header.hoodpage');
+
+  if($nav.hasClass('userNav')) {
+    $hoodHeader.addClass('user')
+  }
 
 });
