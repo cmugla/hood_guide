@@ -71,7 +71,11 @@ When a user wants to login...
 
 ## Flow Chart of App
 
-![homepage flowchart](/wireframes/Homepage.jpg)
+![homepage flowchart](/wireframes/flowcharts/homepage.jpeg)
+
+![hoodpage flowchart](/wireframes/flowcharts/hoodpage.jpeg)
+
+![profile page flowchart](/wireframes/flowcharts/profilepage.jpeg)
 
 ## Future Goals
 
