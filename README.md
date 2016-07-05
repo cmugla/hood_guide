@@ -69,6 +69,10 @@ When a user wants to create a profile...
 When a user wants to login...
 ![login user page](/wireframes/login-user.jpg)
 
+## Flow Chart of App
+
+![homepage flowchart](/wireframes/Homepage.pdf)
+
 ## Future Goals
 
   - Incorporate the Google Maps API so users and guests can search by address
