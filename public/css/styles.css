@@ -28,6 +28,7 @@ input[type="submit"] {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999; }
   #modal-login .modal-inner, #modal-new .modal-inner {
+    border-radius: 5px;
     width: 500px;
     position: absolute;
     top: 50%;

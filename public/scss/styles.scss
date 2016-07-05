@@ -60,6 +60,7 @@ input[type="submit"] {
   z-index: 9999;
 
   & .modal-inner {
+    border-radius: 5px;
     width: 500px;
     position: absolute;
     top: 50%;
