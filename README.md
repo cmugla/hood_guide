@@ -1,5 +1,7 @@
 # Hood guide
   Your first friend when moving to a new neighborhood
+  
+  [Check it out](https://serene-haleakala-88821.herokuapp.com/)
 
 ## Description
   I just moved and it's a little scary moving to a new nighborhood. You don't know which grocery stores to go to, which is the closest dry cleaner with the best reviews, what bar is recommended, movie theaters with the best picture, current events, etc. 
@@ -13,15 +15,15 @@
   - As a guest, I should be able to get info about the neighborhood based on an address, including relevant links
   - As a user, I should be able to save my address/neighborhood
   - As a user, I should be able to get info about my neighborhood
-  - As a user, I should be able to rate and review the "essentials" in a "what we think" rating scale underneath the yelp review scale
-  - As a user, I should be able to post relevant links, news articles, and upcoming events in a "whats trending in *neighborhood*" section
+  - As a user, I should be able to save favorite articles
+  - As a user, I should be able to save favorite events
+  - As a user, I should be able to view all my favorites in a profile page
 
 ## Possible API's linked
 
 What's happening right now:
   - NY Times: recent news articles; filtered by date and location
   - Eventful: UPcoming shows; filtered by date and location
-  - Meetups: Upcoming meetups in the area
 
 Essentials
   - Yelp: grocery stores, dining, drug stores, laundramats, nail salons, etc. ; filtered by location and review rating (most popular)
@@ -40,19 +42,18 @@ Essentials
   - Events will be shown for the borough of the neighborhood selected, not the specific neighborhood
   - News Articles will be shown based on that neighborhood's prevalence in the article (this adds a bit of unpredictability to the targetted news, but I think will still paint a bit of a picture)
   - Users will be able to save articles and events to their profile
-  
-  - Worflow Pending
-    - Yelp API (the essentials) intigrated
-    - Users will be able to review businesses
-    - 'Users favorites' section on the neighborhood page
+  - Yelp businesses will only show Yelp's rating
+  - Yelp businesses will show by popularity, not by category
 
 ## Models
 
   - User model: gets login/new-user info, encrypts passwords & posts to database
-  - NYT model: gets (via request) articles from NY Times API
-  - Eventful model: gets (view request) events from Eventful API
-    - As mentioned above, this will be specific to the borough, I will use an array of neighborhoods within a borough to generalize the search to the borough name - this is mainly due to the way Events are stored in the Eventful database
-  - Yelp model: gets most popular businesses in the neighborhood ** workflow pending
+  - API Data model accesses API data: 
+    - NYTimes: gets (via request) articles from NY Times API
+      - reads location or borough query, depending on how specific the user/guest inputs
+    - Eventful: gets (view request) events from Eventful API
+      - This will be filtered by boroughs, so there will be a drop-down menu to choose borough within the search section, Eventful will only take in the query borough 
+    - Yelp: gets most popular businesses in the neighborhood
 
 ## Wireframes
 
@@ -70,7 +71,7 @@ When a user wants to login...
 
 ## Future Goals
 
-  - Incorporate the Google API so users and guests can search by address
+  - Incorporate the Google Maps API so users and guests can search by address
   - Show events based on the neighborhood (depending on radius outside of address)
   - Show events in categorized blocks, categories as a whole listed based on their popularity (ex. bushwick: concerts listed above museums; upper east side: museum exhibits listed above concerts; etc.)
   - Organize Yelp businesses by category, same sorting method as above
