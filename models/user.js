@@ -1,6 +1,6 @@
-const { MongoClient }   = require('mongodb')
-const dbConnection      = 'mongodb://localhost:27017/hood_user'
-const bcrypt            = require('bcrypt')
+const { MongoClient }   = require('mongodb');
+const dbConnection      = process.env['MONGODB_URI'];
+const bcrypt            = require('bcrypt');
 const salt              = bcrypt.genSalt(10);
 
 function createSecure(email, password, callback) {
