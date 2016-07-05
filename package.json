@@ -30,6 +30,7 @@
     "ejs": "^2.4.2",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
+    "lodash": "^4.13.1",
     "method-override": "^2.3.6",
     "mongodb": "^2.1.18",
     "morgan": "^1.7.0",
