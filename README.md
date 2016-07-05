@@ -71,7 +71,7 @@ When a user wants to login...
 
 ## Flow Chart of App
 
-![homepage flowchart](/wireframes/Homepage.pdf)
+![homepage flowchart](/wireframes/Homepage.jpg)
 
 ## Future Goals
 
