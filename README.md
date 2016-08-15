@@ -19,7 +19,7 @@
   - As a user, I should be able to save favorite events
   - As a user, I should be able to view all my favorites in a profile page
 
-## Possible API's linked
+## API's linked
 
 What's happening right now:
   - NY Times: recent news articles; filtered by date and location
